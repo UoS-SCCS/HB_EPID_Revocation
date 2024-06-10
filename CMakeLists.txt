@@ -52,16 +52,6 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 #set(include_dirs ${utils_dir}/Include ${CMAKE_SOURCE_DIR}/Include ${CMAKE_SOURCE_DIR}/HBGS_picnic)
 set(include_dirs ${utils_dir}/Include ${CMAKE_SOURCE_DIR}/Include ${CMAKE_SOURCE_DIR}/HBGS_picnic)
 
-#find_library(utils_lib    // Compute the hash
-#    utils
-#    PATHS ${utils_dir}/lib
-#)
-# message( STATUS "Utilities lib: ${utils_lib}" )
-#add_library(utils STATIC IMPORTED) # or SHARED instead of STATIC
-#set_target_properties(utils PROPERTIES
-#  IMPORTED_LOCATION ${utils_lib}
-#)
-
 include(${hbgs_dir}/Picnic.cmake)
 
 set(Lib_sources
