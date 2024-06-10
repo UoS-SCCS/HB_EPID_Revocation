@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for i in $(seq 1 1 10); do bin/hbgs_sigrl_list_test2 RL_data rl_255_10 F >> test_rl_255.txt; done
+
+for i in $(seq 1 1 10); do bin/hbgs_sigrl_list_test2 RL_data rl_255_100 F >> test_rl_255.txt; done
+
+for i in $(seq 1 1 10); do bin/hbgs_sigrl_list_test2 RL_data rl_255_500 F >> test_rl_255.txt; done
+
+for i in $(seq 1 1 10); do bin/hbgs_sigrl_list_test2 RL_data rl_255_1000 F >> test_rl_255.txt; done
