@@ -635,7 +635,7 @@ int sigrl_list_test(std::string const &base_dir,
 #endif
 
     td.timer_.reset();
-    (void)make_it_fail;
+
     // Now do the actual test
     Epid_a_rl &aj_list = rsig.rev_check().a_j_;
     aj_list.resize(srlist.size());

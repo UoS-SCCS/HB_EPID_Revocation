@@ -19,18 +19,6 @@
 #include "Lowmc64.h"
 #include "Hb_epid_revocation_lists.h"
 
-/*
-const std::string signature_file_ext{ "sig" };
-
-
-const std::string reference_prefix{ "SRL:" };
-const std::string nonce_prefix{ "Nonce:" };
-const std::string state_prefix{ "Lowmc states:" };
-const std::string verification_data_prefix{ "Data to verify:" };
-const std::string signature_prefix{ "Signature:" };
-const size_t signature_line_length{ 64 };
-*/
-
 struct Revocation_checking_data
 {
     Lowmc_state_words64 sst_{ 0 };
