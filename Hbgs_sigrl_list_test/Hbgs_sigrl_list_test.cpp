@@ -327,15 +327,6 @@ int Hbgs_sigrl_list_test::mpc_simulate_and_verify(randomTape_t *tapes,
         Mpc_sigrl_entry mpc_entry;
         mpc_entry.set_offsets(sigrl_entry_offsets_[e]);
 
-/*
-    Lowmc_state_words64 sku_mask = { 0 };
-    if (sku_mask_offset_ != null_offset) {
-        get_mask_from_tapes(
-          sku_mask, current_tape_ptr, sku_mask_offset_, &paramset_);
-    }
-    Lowmc_state_words64 masked_sku = { 0 };
-    xor64(masked_sku, sk_u_, (Word *)sig_data.proofs_[t]->mpc_inputs_[0]);
-*/
 #ifdef DEBUG_MPC_INPUTS
         std::cout << "\n       masked sku: ";
         print_lowmc_state_words64(
@@ -618,7 +609,7 @@ int sigrl_list_test(std::string const &base_dir,
     if (!read_srl_data(srlist, base_dir, srl_filename)) { return EXIT_FAILURE; }
 
     size_t failing_entry = 3;
-    if (make_it_fail) {// Fix an entry in ther list using users_sk
+    if (make_it_fail) {// Fix an entry in the list using users_sk
         Epid_sigrl_entry &entry = srlist[failing_entry];
         lowmc64(entry.second(), users_sk, entry.first(), &paramset);
         std::cout
@@ -705,21 +696,7 @@ int sigrl_list_test(std::string const &base_dir,
 #ifndef MINIMAL_PRINTING
     std::cout << " ... success, signature is " << signature_len << " bytes\n ";
 #endif
-    /*
-        if (!print_revocation_signature(rsig, base_dir, "test_sig")) {
-            std::cerr << "Writing out the signature data failed\n" <<
-       std::flush;
-        }
 
-        Revocation_signature rsig_read{};
-        if (!read_revocation_signature(rsig_read, base_dir, "test_sig")) {
-            std::cerr << "Reading the signature data failed\n" << std::flush;
-        }
-
-        std::cout << "Data read:\n";
-        rsig_read.print_rs(std::cout);
-        std::cout << '\n';
-    */
     td.times_.emplace_back(Mpc_time_point{ "generate_srl_signature",
       static_cast<float>(td.timer_.get_duration() + 0.5F) });
 

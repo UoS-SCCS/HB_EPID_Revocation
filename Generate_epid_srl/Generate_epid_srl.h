@@ -1,5 +1,5 @@
 /***************************************************************************
- * File:        Generate_epid_revocation_lists.h
+ * File:        Generate_epid_srl.h
  * Description: Code to generate test revocation lists for hash based EPID
  *
  * Author:      Chris Newton

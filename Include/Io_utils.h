@@ -48,8 +48,7 @@ constexpr int maxline = 200;
 std::string make_filename(std::string const &baseDir, std::string const &name);
 
 std::string get_environment_variable(
-  std::string const &var,
-  std::string def) noexcept;
+  std::string const &var, std::string def) noexcept;
 
 void eat_white(std::istream &is);
 
@@ -70,33 +69,12 @@ bool read_hex_byte(std::istream &is, uint8_t *byte);
 
 bool read_hex_bytes(std::istream &is, uint8_t *buf, size_t number_to_read);
 
-
-// Recursive version of vars_to_string, may cause code to grow unnecessarily
-// see https://www.youtube.com/watch?v=CU3VYN6xGzM, C++ Weekly for an
-// alternative using initialiser lists
-/* template<typename T>
-std::string vars_to_string(T const &t)
-{
-    std::ostringstream os;
-    os << t;
-    return os.str();
-}
-
-template<typename T, typename... Vargs>
-std::string vars_to_string(T t, Vargs... args)
-{
-    std::ostringstream os;
-    os << t;
-    return os.str() + vars_to_string(args...);
-}
-*/
-// Alternative initialiser list version
+// Initialiser list version of vars_to_string
 // (A,B) - A is carried out first, then B. The result from B is returned
 // (os << t, 0) - writes t to the stream and returns 0 to the <int> initializer
 // list
 // ... the parameter pack is expanded
-template<typename... T>
-std::string vars_to_string(const T &...t)
+template<typename... T> std::string vars_to_string(const T &...t)
 {
     std::ostringstream os;
     (void)std::initializer_list<int>{ (os << t, 0)... };
