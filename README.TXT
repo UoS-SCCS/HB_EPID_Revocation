@@ -66,7 +66,3 @@ gave
 There are two scripts (runjobs_129 and runjobs_255) that can be used to run a set of tests.
 The resulting .txt files can be read into a spreadsheet for processing.
 
-## License
-The main body of code is licensed under the BSD two clause licence (see LICENSE.TXT).
-
-The Picnic code that is used in this implementation has its own licence (see HBGS_picnic/LICENCE).
