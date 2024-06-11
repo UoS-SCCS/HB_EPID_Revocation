@@ -26,3 +26,8 @@ The executable are:
 
 ## Installation and Testing
 For installation and testing see README.TXT.
+
+## License
+The main body of code is licensed under the BSD two clause licence (see LICENSE.TXT).
+
+The Picnic code that is used in this implementation has its own licence (see HBGS_picnic/LICENCE).
