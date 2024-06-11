@@ -16,6 +16,7 @@ There are separate executables for each value of the number of bits in the LowMC
 built using cmake, which is set to allow executables for n=129 or n=255 to be built.
 
 The executable are:
+
     - generate_epid_srl_nnn. this generates a signature revocation list that can then be used for testing. nnn is the number of bits in the LowMC state being used.
 
     - hbgs_sigrl_list_test_nnn, this generates the proof that the signer's key is not inlcuded in the SRL ($\pi_R$) and then runs the verification check. The output is a set of timings for the different stages together with the signature size.
