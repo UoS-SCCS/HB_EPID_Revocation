@@ -68,23 +68,24 @@ set(Lib_sources
     ${CMAKE_CURRENT_SOURCE_DIR}/Common/Hbgs_epid_signature.cpp
 )
 
-option(HBGS_PARAMETER_SET_TEST1 "HBGS parameter set for test1 (129,10,32,2,16,36,250)" ON)
-option(HBGS_PARAMETER_SET_TEST2 "HBGS parameter set for test2 (255,10,64,2,16,68,601)" OFF)
+option(HBGS_PARAMETER_SET_TEST1 "HBGS parameter set for 129 bits (129,10,32,2,16,36,250)" ON)
+option(HBGS_PARAMETER_SET_TEST2 "HBGS parameter set for 255 bits (255,10,64,2,16,68,601)" OFF)
 
+# Picnic3_L1 = 1, Picnic3_L5 = 2, using the original parameter sets for revocation. 
 if (HBGS_PARAMETER_SET_TEST1)
-    add_compile_definitions(HBGS_N=129 HBGS_QA=10 HBGS_DS=32 HBGS_H=1 HBGS_D=4 HBGS_K=11 PICNIC_PS=5 HBGS_MPC_R=250 HBGS_MPC_O=36)
-    message(STATUS "HBGS parameter set for test1 (129 bits) selected")
+    add_compile_definitions(HBGS_N=129 HBGS_QA=10 HBGS_DS=32 HBGS_H=1 HBGS_D=4 HBGS_K=11 PICNIC_PS=1 HBGS_MPC_R=250 HBGS_MPC_O=36)
+    message(STATUS "HBGS parameter set for 129 bits selected")
     add_library(hbgs_lib_129 STATIC ${Lib_sources})
     target_include_directories(hbgs_lib_129 SYSTEM PRIVATE ${include_dirs})
     target_link_libraries(hbgs_lib_129 PRIVATE project_options project_warnings)
 elseif (HBGS_PARAMETER_SET_TEST2)
-    add_compile_definitions(HBGS_N=255 HBGS_QA=10 HBGS_DS=64 HBGS_H=1 HBGS_D=4 HBGS_K=11 PICNIC_PS=6 HBGS_MPC_R=601 HBGS_MPC_O=68)
-    message(STATUS "HBGS parameter set for test2 (255 bits) selected")
+    add_compile_definitions(HBGS_N=255 HBGS_QA=10 HBGS_DS=64 HBGS_H=1 HBGS_D=4 HBGS_K=11 PICNIC_PS=2 HBGS_MPC_R=601 HBGS_MPC_O=68)
+    message(STATUS "HBGS parameter set for 255 bits selected")
     add_library(hbgs_lib_255 STATIC ${Lib_sources})
     target_include_directories(hbgs_lib_255 SYSTEM PRIVATE ${include_dirs})
     target_link_libraries(hbgs_lib_255 PRIVATE project_options project_warnings)
 else()
-    message( FATAL_ERROR "Failed to correctly select an HBGS parameter set, CMake will exit." )
+    message( FATAL_ERROR "Failed to correctly select a parameter set, CMake will exit." )
 endif()
 
 # set these for profiing - there must be a better way

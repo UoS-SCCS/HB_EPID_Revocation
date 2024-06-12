@@ -48,10 +48,10 @@ typedef enum picnic_params_t {
     PARAMETER_SET_INVALID = 0,
     Picnic3_L1 = 1,
     Picnic3_L5 = 2,
-    Picnic3_L1t = 3,
-    Picnic3_L5t = 4,
-    Picnic3_L1r = 5,
-    Picnic3_L5r = 6,
+    Picnic3_L1h = 3,
+    Picnic3_L5h = 4,
+    Picnic3_L1t = 5,
+    Picnic3_L5t = 6,
     PARAMETER_SET_MAX_INDEX = 7
 } picnic_params_t;
 

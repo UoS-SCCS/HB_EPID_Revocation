@@ -32,11 +32,11 @@ transform_t get_transform(picnic_params_t parameters)
 {
     switch (parameters) {
     case Picnic3_L1:
+    case Picnic3_L1h:
     case Picnic3_L1t:
     case Picnic3_L5:
+    case Picnic3_L5h:
     case Picnic3_L5t:
-    case Picnic3_L1r:
-    case Picnic3_L5r:
         return TRANSFORM_FS;
     default:
         return TRANSFORM_INVALID;
@@ -49,16 +49,16 @@ const char *picnic_get_param_name(picnic_params_t parameters)
     switch (parameters) {
     case Picnic3_L1:
         return "Picnic3_L1";
+    case Picnic3_L1h:
+        return "Picnic3_L1h";
     case Picnic3_L1t:
         return "Picnic3_L1t";
     case Picnic3_L5:
         return "Picnic3_L5";
+    case Picnic3_L5h:
+        return "Picnic3_L5h";
     case Picnic3_L5t:
         return "Picnic3_L5t";
-    case Picnic3_L1r:
-        return "Picnic3_L1r";
-    case Picnic3_L5r:
-        return "Picnic3_L5r";
     default:
         return "Unknown parameter set";
     }
@@ -72,7 +72,7 @@ int get_param_set(picnic_params_t picnicParams, paramset_t *paramset)
     uint32_t pqSecurityLevel;
 
     switch (picnicParams) {
-    /* Original
+    /* Original */
     case Picnic3_L1:
         pqSecurityLevel = 64;
         paramset->stateSizeBits = 129;
@@ -83,8 +83,10 @@ int get_param_set(picnic_params_t picnicParams, paramset_t *paramset)
         paramset->numRounds = 4;
         paramset->digestSizeBytes = 32;
         break;
-    */
-    case Picnic3_L1:
+    case Picnic3_L1h:
+        /* Edited to align with the HBGS requirements for
+         *  numMPCRounds and numOpenedRounds
+         */
         pqSecurityLevel = 64;
         paramset->stateSizeBits = 129;
         paramset->numMPCRounds = 560;
@@ -95,6 +97,9 @@ int get_param_set(picnic_params_t picnicParams, paramset_t *paramset)
         paramset->digestSizeBytes = 32;
         break;
     case Picnic3_L1t:
+        /* Dummy set of parameters for quick testing of HBGS, very low values
+         * for numMPCRounds and numOpenedRounds
+         */
         pqSecurityLevel = 64;
         paramset->stateSizeBits = 129;
         paramset->numMPCRounds = 4;
@@ -104,7 +109,7 @@ int get_param_set(picnic_params_t picnicParams, paramset_t *paramset)
         paramset->numRounds = 4;
         paramset->digestSizeBytes = 32;
         break;
-    /* Original
+    /* Original */
     case Picnic3_L5:
         pqSecurityLevel = 128;
         paramset->stateSizeBits = 255;
@@ -115,8 +120,10 @@ int get_param_set(picnic_params_t picnicParams, paramset_t *paramset)
         paramset->numRounds = 4;
         paramset->digestSizeBytes = 64;
         break;
-    */
-    case Picnic3_L5:
+    case Picnic3_L5h:
+        /* Edited to align with the HBGS requirements for
+         *  numMPCRounds and numOpenedRounds
+         */
         pqSecurityLevel = 128;
         paramset->stateSizeBits = 255;
         paramset->numMPCRounds = 1120;
@@ -127,30 +134,13 @@ int get_param_set(picnic_params_t picnicParams, paramset_t *paramset)
         paramset->digestSizeBytes = 64;
         break;
     case Picnic3_L5t:
+        /* Dummy set of parameters for quick testing of HBGS, very low values
+         * for numMPCRounds and numOpenedRounds
+         */
         pqSecurityLevel = 128;
         paramset->stateSizeBits = 255;
         paramset->numMPCRounds = 4;
         paramset->numOpenedRounds = 2;
-        paramset->numMPCParties = 16;
-        paramset->numSboxes = 85;
-        paramset->numRounds = 4;
-        paramset->digestSizeBytes = 64;
-        break;
-    case Picnic3_L1r:
-        pqSecurityLevel = 64;
-        paramset->stateSizeBits = 129;
-        paramset->numMPCRounds = 250;
-        paramset->numOpenedRounds = 36;
-        paramset->numMPCParties = 16;
-        paramset->numSboxes = 43;
-        paramset->numRounds = 4;
-        paramset->digestSizeBytes = 32;
-        break;
-    case Picnic3_L5r:
-        pqSecurityLevel = 128;
-        paramset->stateSizeBits = 255;
-        paramset->numMPCRounds = 601;
-        paramset->numOpenedRounds = 68;
         paramset->numMPCParties = 16;
         paramset->numSboxes = 85;
         paramset->numRounds = 4;
