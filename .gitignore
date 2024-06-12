@@ -1,0 +1,32 @@
+# Prerequisites
+**/.d
+
+# Compiled Object files
+*.o
+
+#VS Code files
+**/.vs
+**/.vscode
+
+# Debug files
+**/gmon.out
+
+# Callgrind files
+**/callgrind*
+
+# Libraries
+**/lib
+
+# Binaries
+**/bin
+
+# Cmake build directory
+**/build
+
+# Picnic executables in HBGS_picnic
+HBGS_picnic/apitest
+HBGS_picnic/create_test_vectors
+HBGS_picnic/example
+HBGS_picnic/tree_test
+HBGS_picnic/unit_test
+
