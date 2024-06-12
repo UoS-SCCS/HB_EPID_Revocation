@@ -9,7 +9,6 @@ cmake_minimum_required(VERSION 3.13)
 project(hbgs_impl CXX C)
 
 set(code_dir $ENV{HOME}/Code)
-#set(utils_dir ${code_dir}/Utilities)
 set(hbgs_dir ${CMAKE_CURRENT_SOURCE_DIR})
 set(picnic_dir ${hbgs_dir}/HBGS_picnic)
 
@@ -41,15 +40,13 @@ include(${code_dir}/Cmake-options/StaticAnalysers.cmake)
 #    e.g. cmake_print_variables(<variable>)
 include(CMakePrintHelpers)
 
-option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
-
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set(LIBRARY_OUTPUT_PATH  ${CMAKE_SOURCE_DIR}/lib)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin) 
-#set(include_dirs ${utils_dir}/Include ${CMAKE_SOURCE_DIR}/Include ${CMAKE_SOURCE_DIR}/HBGS_picnic)
+
 set(include_dirs ${utils_dir}/Include ${CMAKE_SOURCE_DIR}/Include ${CMAKE_SOURCE_DIR}/HBGS_picnic)
 
 include(${hbgs_dir}/Picnic.cmake)
