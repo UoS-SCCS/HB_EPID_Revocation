@@ -70,7 +70,7 @@ inline constexpr std::pair<uint32_t, uint32_t> calculate_tree_height(
     return std::make_pair(ht, n_leaves);
 }
 
-struct Public_parameters
+struct Tree_parameters
 {
     static constexpr uint16_t n_ = HBGS_N;
     static constexpr uint8_t q_alpha_ = HBGS_QA;
@@ -88,7 +88,7 @@ struct Public_parameters
 
 inline constexpr uint16_t rounds_per_path(uint16_t n_rounds)
 {
-    uint16_t rpp = n_rounds / Public_parameters::k_;
+    uint16_t rpp = n_rounds / Tree_parameters::k_;
 
     // Adjust for test parameters with small round numbers
     return (rpp == 0) ? 1 : rpp;

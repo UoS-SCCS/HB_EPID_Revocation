@@ -141,12 +141,12 @@ void print_picnic_parameters(std::ostream &os)
 void print_hbgs_parameters(std::ostream &os)
 {
     os << green << "The HBGS parameters are\n"
-       << "\t                 n: " << Public_parameters::n_ << '\n'
-       << "\t           q_alpha: " << 0 + Public_parameters::q_alpha_ << '\n'
-       << "\t                 q: " << Public_parameters::q_ << '\n'
-       << "\t                 h: " << 0 + Public_parameters::h_ << '\n'
-       << "\t                 d: " << 0 + Public_parameters::d_ << '\n'
-       << "\t                 k: " << Public_parameters::k_ << '\n';
+       << "\t                 n: " << Tree_parameters::n_ << '\n'
+       << "\t           q_alpha: " << 0 + Tree_parameters::q_alpha_ << '\n'
+       << "\t                 q: " << Tree_parameters::q_ << '\n'
+       << "\t                 h: " << 0 + Tree_parameters::h_ << '\n'
+       << "\t                 d: " << 0 + Tree_parameters::d_ << '\n'
+       << "\t                 k: " << Tree_parameters::k_ << '\n';
 
     os << "\nThe LowMC parameters are\n"
        << "\t  lowmc_state_bits: " << Mpc_parameters::lowmc_state_bits_ << '\n'
@@ -348,10 +348,10 @@ void calculate_challenge_lists(uint8_t *challenge_hash, uint16_t *challengeC,
 void calcualte_challenge_lists16(
   uint8_t *challenge_hash, uint16_t *challengeC, uint16_t *challengeP)
 {
-    assertm(Mpc_parameters::opened_mpc_rounds_ == Public_parameters::k_,
+    assertm(Mpc_parameters::opened_mpc_rounds_ == Tree_parameters::k_,
       "calculate_challenge_lists16: inconsistent values for k_ and "
       "opened_mpc_rounds_");
-    for (uint16_t i = 0; i < Public_parameters::k_; ++i) {
+    for (uint16_t i = 0; i < Tree_parameters::k_; ++i) {
         challengeC[i] =
           static_cast<uint16_t>(i * Mpc_parameters::mpc_rounds_per_path_
                                 + (challenge_hash[i] & 0x0f));
