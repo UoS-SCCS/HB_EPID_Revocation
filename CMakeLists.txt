@@ -68,8 +68,9 @@ set(Lib_sources
     ${CMAKE_CURRENT_SOURCE_DIR}/Common/Hbgs_epid_signature.cpp
 )
 
-option(HBGS_PARAMETER_SET_TEST1 "HBGS parameter set for 129 bits (129,10,32,2,16,36,250)" ON)
-option(HBGS_PARAMETER_SET_TEST2 "HBGS parameter set for 255 bits (255,10,64,2,16,68,601)" OFF)
+# Similar paramter sets to those used for the actual signing code - most values are ignored here
+option(HBGS_PARAMETER_SET_TEST1 "HBGS parameter set for 129 bits (129,10,32,1,16,36,250)" ON)
+option(HBGS_PARAMETER_SET_TEST2 "HBGS parameter set for 255 bits (255,10,64,1,16,68,601)" OFF)
 
 # Picnic3_L1 = 1, Picnic3_L5 = 2, using the original parameter sets for revocation. 
 if (HBGS_PARAMETER_SET_TEST1)
