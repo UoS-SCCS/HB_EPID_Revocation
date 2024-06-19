@@ -43,8 +43,6 @@
 #include <utility>
 #include <cassert>
 
-#include "Hbgs_param.h"
-
 #define assertm(exp, msg) assert(((void)msg, exp))
 
 // Templates for Pow(base,n) - used for constexpr values
