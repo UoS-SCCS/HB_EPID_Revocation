@@ -323,8 +323,7 @@ size_t picnic_signature_size(picnic_params_t parameters)
     if (ret != EXIT_SUCCESS) { return PICNIC_MAX_SIGNATURE_SIZE; }
 
     /* Picnic3 parameter sets - restricted to those we need */
-    if (parameters == Picnic3_L1 || Picnic3_L1t || parameters == Picnic3_L5
-        || parameters == Picnic3_L5t) {
+    if (parameters == Picnic3_L1 || parameters == Picnic3_L1t || parameters == Picnic3_L1h || parameters == Picnic3_L5 || parameters == Picnic3_L5t || parameters == Picnic3_L5h ) {
 
         size_t u = paramset.numOpenedRounds;
         size_t T = paramset.numMPCRounds;
