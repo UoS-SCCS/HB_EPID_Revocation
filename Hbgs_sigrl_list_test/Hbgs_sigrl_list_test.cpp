@@ -725,7 +725,7 @@ int sigrl_list_test(std::string const &base_dir,
 #endif
 
     td.times_.emplace_back(Mpc_time_point{ "generate_srl_signature",
-      static_cast<float>(td.timer_.get_duration() + 0.5F) });
+      static_cast<float>(td.timer_.get_duration()) });
 
     hbgs_sigrl_list_test.reset();
 
@@ -750,7 +750,7 @@ int sigrl_list_test(std::string const &base_dir,
     }
 
     td.times_.emplace_back(Mpc_time_point{ "verify_srl_signature",
-      static_cast<float>(td.timer_.get_duration() + 0.5F) });
+      static_cast<float>(td.timer_.get_duration()) });
 
 
     if (!verified_ok) {
